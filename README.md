@@ -21,6 +21,9 @@ SDK's `Enrollment` interface.
  Please note that this is not the API documentation or a tutorial for the SDK, this will
   only help you familiarize to get started with the SDK if you are new in this domain.
 
+## Android
+This branch contains a port to Android of the release-1.4 branch
+Required Android API Level: 26
 
 ## Release notes
 
@@ -91,6 +94,12 @@ To build this project, the following dependencies must be met
 To run the integration tests Fabric and Fabric CA is needed which require
  * Docker 18.03
  * Docker compose 1.21.2
+
+## Building the SDK
+Use the "release" Maven profile to package the dependencies into the jar.
+```
+mvn package -P release
+```
 
 ## Using the SDK
 
@@ -261,7 +270,7 @@ Find the release _&lt;release&gt;_-SNAPSHOT directory then search for the latest
 
 
 ### Is Android supported?
-No.
+Not yet...
 
 ### Is there an API to query for all channels that exist?
 No.
