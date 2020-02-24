@@ -25,6 +25,9 @@ SDK's `Enrollment` interface.
 This branch contains a port to Android of the release-1.4 branch
 Required Android API Level: 26
 
+### Changes made:
+* modified Regex in org/hyperledger/fabric/sdk/helper/Utils.java
+
 ## Release notes
 
 |Release | Notes |Summary|
