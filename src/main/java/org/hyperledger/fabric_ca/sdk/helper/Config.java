@@ -20,7 +20,6 @@ import java.util.Properties;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Level;
 
 /**
  * Config allows for a global config of the toolkit. Central location for all
@@ -53,7 +52,6 @@ public class Config {
     public static final String CERTIFICATE_FORMAT = BASE_PROP + "crypto.certificate_format";
     public static final String SIGNATURE_ALGORITHM = BASE_PROP + "crypto.default_signature_algorithm";
     public static final String MAX_LOG_STRING_LENGTH = BASE_PROP + "log.stringlengthmax";
-    public static final String LOGGERLEVEL = BASE_PROP + "loglevel";  // ORG_HYPERLEDGER_FABRIC_CA_SDK_LOGLEVEL=TRACE,DEBUG
 
     public static final String CONNECTION_REQUEST_TIMEOUT = BASE_PROP + "connection.connection_request_timeout"; //ORG_HYPERLEDGER_FABRIC_CA_SDK_CONNECTION_CONNECTION_REQUEST_TIMEOUT
     public static final String CONNECT_TIMEOUT = BASE_PROP + "connection.connect_timeout"; //ORG_HYPERLEDGER_FABRIC_CA_SDK_CONNECTION_CONNECT_TIMEOUT
@@ -101,49 +99,6 @@ public class Config {
             defaultProperty(PROPOSAL_WAIT_TIME, "12000");
 
             defaultProperty(MAX_LOG_STRING_LENGTH, "64");
-
-            defaultProperty(LOGGERLEVEL, null);
-
-            final String inLogLevel = sdkProperties.getProperty(LOGGERLEVEL);
-
-            if (null != inLogLevel) {
-
-                org.apache.log4j.Level setTo = null;
-
-                switch (inLogLevel) {
-
-                    case "TRACE":
-                        setTo = org.apache.log4j.Level.TRACE;
-                        break;
-
-                    case "DEBUG":
-                        setTo = org.apache.log4j.Level.DEBUG;
-                        break;
-
-                    case "INFO":
-                        setTo = Level.INFO;
-                        break;
-
-                    case "WARN":
-                        setTo = Level.WARN;
-                        break;
-
-                    case "ERROR":
-                        setTo = Level.ERROR;
-                        break;
-
-                    default:
-                        setTo = Level.INFO;
-                        break;
-
-                }
-
-                if (null != setTo) {
-                    org.apache.log4j.Logger.getLogger("org.hyperledger.fabric_ca").setLevel(setTo);
-                }
-
-            }
-
         }
 
     }
