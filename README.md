@@ -27,6 +27,7 @@ Required Android API Level: 26
 
 ### Changes made:
 * modified Regex in org/hyperledger/fabric/sdk/helper/Utils.java
+* removed Log4j
 
 ## Release notes
 

@@ -25,7 +25,6 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.apache.log4j.Level;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import static java.lang.String.format;
@@ -75,7 +74,6 @@ public class Config {
      **/
     public static final String MAX_LOG_STRING_LENGTH = "org.hyperledger.fabric.sdk.log.stringlengthmax";
     public static final String EXTRALOGLEVEL = "org.hyperledger.fabric.sdk.log.extraloglevel";  // ORG_HYPERLEDGER_FABRIC_SDK_LOG_EXTRALOGLEVEL
-    public static final String LOGGERLEVEL = "org.hyperledger.fabric.sdk.loglevel";  // ORG_HYPERLEDGER_FABRIC_SDK_LOGLEVEL=TRACE,DEBUG
     public static final String DIAGNOTISTIC_FILE_DIRECTORY = "org.hyperledger.fabric.sdk.diagnosticFileDir"; //ORG_HYPERLEDGER_FABRIC_SDK_DIAGNOSTICFILEDIR
 
     /**
@@ -182,7 +180,6 @@ public class Config {
              **/
             defaultProperty(MAX_LOG_STRING_LENGTH, "64");
             defaultProperty(EXTRALOGLEVEL, "0");
-            defaultProperty(LOGGERLEVEL, null);
             defaultProperty(DIAGNOTISTIC_FILE_DIRECTORY, null);
             /**
              * Miscellaneous settings
@@ -194,47 +191,6 @@ public class Config {
             defaultProperty(SERVICE_DISCOVER_FREQ_SECONDS, "120");
             defaultProperty(SERVICE_DISCOVER_WAIT_TIME, "5000");
             defaultProperty(SERVICE_DISCOVER_AS_LOCALHOST, "false");
-
-            final String inLogLevel = sdkProperties.getProperty(LOGGERLEVEL);
-
-            if (null != inLogLevel) {
-
-                org.apache.log4j.Level setTo;
-
-                switch (inLogLevel.toUpperCase()) {
-
-                    case "TRACE":
-                        setTo = org.apache.log4j.Level.TRACE;
-                        break;
-
-                    case "DEBUG":
-                        setTo = org.apache.log4j.Level.DEBUG;
-                        break;
-
-                    case "INFO":
-                        setTo = Level.INFO;
-                        break;
-
-                    case "WARN":
-                        setTo = Level.WARN;
-                        break;
-
-                    case "ERROR":
-                        setTo = Level.ERROR;
-                        break;
-
-                    default:
-                        setTo = Level.INFO;
-                        break;
-
-                }
-
-                if (null != setTo) {
-                    org.apache.log4j.Logger.getLogger("org.hyperledger.fabric").setLevel(setTo);
-                }
-
-            }
-
         }
 
     }
