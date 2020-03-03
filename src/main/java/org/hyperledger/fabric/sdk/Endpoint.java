@@ -44,6 +44,8 @@ import io.grpc.netty.NettyChannelBuilder;
 import io.netty.handler.ssl.SslContext;
 import io.netty.handler.ssl.SslContextBuilder;
 import io.netty.handler.ssl.SslProvider;
+import io.netty.util.internal.logging.InternalLoggerFactory;
+import io.netty.util.internal.logging.JdkLoggerFactory;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -78,6 +80,8 @@ class Endpoint {
     private static final Map<String, String> CN_CACHE = Collections.synchronizedMap(new HashMap<>());
 
     Endpoint(String url, Properties properties) {
+        InternalLoggerFactory.setDefaultFactory(JdkLoggerFactory.INSTANCE);
+
         logger.trace(format("Creating endpoint for url %s", url));
         this.url = url;
         String cn = null;
