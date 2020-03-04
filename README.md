@@ -28,6 +28,22 @@ Required Android API Level: 26
 ### Changes made:
 * modified Regex in org/hyperledger/fabric/sdk/helper/Utils.java
 * removed Log4j
+* configured io.netty to use the JdkLogger instead of the Log4JLogger
+* updated protobuf to v3.11.0 because v3.10.x uses MethodHandle.invoke(), which is not supported on Android
+
+### Things to consider:
+* If you get errors from io.netty because of failing Log4J invocations add this line to the start of your App: `InternalLoggerFactory.setDefaultFactory(JdkLoggerFactory.INSTANCE);`
+* If your app uses ApiLevel < 21 and you get the error `Error: null, Cannot fit requested classes in a single dex file (# methods: 190633 > 65536)`, make sure to enable [multiDex Support](https://developer.android.com/studio/build/multidex)
+
+### Usage
+Add these dependencies to your modules build.gradle:
+```
+dependencies {
+  implementation project(":fabric-gateway-java-1.4.3")
+  implementation project(":fabric-sdk-java-1.4.8-jar-with-dependencies")
+  annotationProcessor project(":fabric-sdk-java-1.4.8-jar-with-dependencies")
+}
+```
 
 ## Release notes
 
