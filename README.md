@@ -22,8 +22,8 @@ SDK's `Enrollment` interface.
   only help you familiarize to get started with the SDK if you are new in this domain.
 
 ## Android
-This branch contains a port to Android of the release-1.4 branch
-Required Android API Level: 26
+This branch contains a port to Android of the release-1.4 branch.
+Required Android API Level: 19
 
 ### Changes made:
 * modified Regex in org/hyperledger/fabric/sdk/helper/Utils.java
