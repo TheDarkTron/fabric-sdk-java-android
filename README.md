@@ -35,6 +35,10 @@ Required Android API Level: 19
 * If you get errors from io.netty because of failing Log4J invocations add this line to the start of your App: `InternalLoggerFactory.setDefaultFactory(JdkLoggerFactory.INSTANCE);`
 * If your app uses ApiLevel < 21 and you get the error `Error: null, Cannot fit requested classes in a single dex file (# methods: 190633 > 65536)`, make sure to enable [multiDex Support](https://developer.android.com/studio/build/multidex)
 
+### Build
+To build the library execute the maven goal:
+`mvn package -P release` You will find the jar in `target\`
+
 ### Usage
 Add these dependencies to your modules build.gradle:
 ```
