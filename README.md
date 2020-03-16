@@ -40,14 +40,7 @@ To build the library execute the maven goal:
 `mvn package -P release` You will find the jar in `target\`
 
 ### Usage
-Add these dependencies to your modules build.gradle:
-```
-dependencies {
-  implementation project(":fabric-gateway-java-1.4.3")
-  implementation project(":fabric-sdk-java-1.4.8-jar-with-dependencies")
-  annotationProcessor project(":fabric-sdk-java-1.4.8-jar-with-dependencies")
-}
-```
+Copy the Fabric-sdk-java-1.4.8-jar-with-dependencies.jar to the libs folder of your android app module
 
 ## Release notes
 
