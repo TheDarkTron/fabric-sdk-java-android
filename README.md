@@ -287,7 +287,7 @@ Find the release _&lt;release&gt;_-SNAPSHOT directory then search for the latest
 
 
 ### Is Android supported?
-Not yet...
+Yes.
 
 ### Is there an API to query for all channels that exist?
 No.
