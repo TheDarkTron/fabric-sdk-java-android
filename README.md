@@ -1,3 +1,25 @@
+# Android
+This branch contains a port to Android of the release-1.4 branch.
+Required Android API Level: 19
+
+## Changes made:
+* modified Regex in org/hyperledger/fabric/sdk/helper/Utils.java
+* removed log4j
+* configured io.netty to use the JdkLogger instead of the Log4JLogger
+* updated protobuf to v3.11.0 because v3.10.0 uses MethodHandle.invoke(), which is not supported on Android
+
+## Things to consider:
+* If you get errors from io.netty because of failing Log4J invocations add this line to the start of your App: `InternalLoggerFactory.setDefaultFactory(JdkLoggerFactory.INSTANCE);`
+* If your app uses ApiLevel < 21 and you get the error `Error: null, Cannot fit requested classes in a single dex file (# methods: 190633 > 65536)`, make sure to enable [multiDex Support](https://developer.android.com/studio/build/multidex)
+
+## Build
+To build the library execute the maven goal:
+`mvn package -P release -DskipTests` You will find the jar in `target\`
+
+## Usage
+Copy the fabric-sdk-java-1.4.8-jar-with-dependencies.jar to the libs\ folder of your android app module
+
+# Original Hyperledger README:
 # Java SDK for Hyperledger Fabric 1.4
 Welcome to Java SDK for Hyperledger project. The SDK helps facilitate Java applications to manage the lifecycle of
  Hyperledger channels  and user chaincode. The SDK also provides a means to execute
@@ -21,27 +43,6 @@ SDK's `Enrollment` interface.
  Please note that this is not the API documentation or a tutorial for the SDK, this will
   only help you familiarize to get started with the SDK if you are new in this domain.
 
-## Android
-This branch contains a port to Android of the release-1.4 branch.
-Required Android API Level: 19
-
-### Changes made:
-* modified Regex in org/hyperledger/fabric/sdk/helper/Utils.java
-* removed Log4j
-* configured io.netty to use the JdkLogger instead of the Log4JLogger
-* updated protobuf to v3.11.0 because v3.10.x uses MethodHandle.invoke(), which is not supported on Android
-
-### Things to consider:
-* If you get errors from io.netty because of failing Log4J invocations add this line to the start of your App: `InternalLoggerFactory.setDefaultFactory(JdkLoggerFactory.INSTANCE);`
-* If your app uses ApiLevel < 21 and you get the error `Error: null, Cannot fit requested classes in a single dex file (# methods: 190633 > 65536)`, make sure to enable [multiDex Support](https://developer.android.com/studio/build/multidex)
-
-### Build
-To build the library execute the maven goal:
-`mvn package -P release` You will find the jar in `target\`
-
-### Usage
-Copy the Fabric-sdk-java-1.4.8-jar-with-dependencies.jar to the libs folder of your android app module
-
 ## Release notes
 
 |Release | Notes |Summary|
@@ -55,21 +56,9 @@ Copy the Fabric-sdk-java-1.4.8-jar-with-dependencies.jar to the libs folder of y
 
 ## Checkout SDK from Github
 ```
-git clone https://github.com/hyperledger/fabric-sdk-java.git
-cd fabric-sdk-java/
-git checkout -b release-1.4
-```
-
-## Java applications
-For Java applications use the latest published v1.4.x releases:
-```
-     <!-- https://mvnrepository.com/artifact/org.hyperledger.fabric-sdk-java/fabric-sdk-java -->
-     <dependency>
-         <groupId>org.hyperledger.fabric-sdk-java</groupId>
-         <artifactId>fabric-sdk-java</artifactId>
-         <version>1.4.1</version>
-     </dependency>
-
+git clone https://github.com/TheDarkTron/fabric-sdk-java-android.git
+cd fabric-sdk-java-android/
+git checkout -b android-1.4
 ```
 
 ## Known limitations and restrictions
