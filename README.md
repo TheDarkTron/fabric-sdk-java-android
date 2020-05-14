@@ -14,10 +14,11 @@ Required Android API Level: 19
 
 ## Build
 To build the library execute the maven goal:
-`mvn package -P release -DskipTests` You will find the jar in `target\`
+`mvn package -P release -DskipTests` You will find the jar in `target/`
 
 ## Usage
-Copy the fabric-sdk-java-1.4.8-jar-with-dependencies.jar to the libs\ folder of your android app module
+Copy the `fabric-sdk-java-1.4.8-jar-with-dependencies.jar` to the libs/ folder of your android app module. Add the library as dependency in `settings.gradle` and `build.gradle`.
+Further information: https://developer.android.com/studio/projects/android-library#AddDependency
 
 # Original Hyperledger README:
 # Java SDK for Hyperledger Fabric 1.4
